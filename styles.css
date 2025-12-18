@@ -142,8 +142,12 @@ main > *{
   white-space: nowrap;
 
   /* Perspective + tilt like the sample */
-  transform-origin: right center;
-  transform: perspective(1000px) rotateY(-18deg) rotateZ(-10deg);
+  transform-origin: right top;
+  transform:
+    perspective(1000px)
+    rotateX(12deg)
+    rotateY(-18deg)
+    rotateZ(8deg);
 
   /* Punchy poster shadows */
   text-shadow:
