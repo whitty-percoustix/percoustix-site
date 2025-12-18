@@ -114,14 +114,14 @@ main > *{
 /* HERO: full hero image (Canva export) */
 .hero{
   position: relative;
-  min-height: 130vh; /* 👈 this is the magic */
+  min-height: 100vh; /* 👈 this is the magic */
   background: url("assets/img/hero-home.jpg") no-repeat center top / cover;
 }
 
 /* HERO needs positioning context */
 .hero{
   position: relative;
-  min-height: 130vh; /* keep your “full scene” height */
+  min-height: 100vh; /* keep your “full scene” height */
   background: url("assets/img/hero-home.jpg") no-repeat center top / cover;
   overflow: hidden;
 }
@@ -196,7 +196,8 @@ main > *{
   max-width: 820px;
 }
 .why{
-  margin-top: -10vh; /* gently overlaps without cutting */
+  padding-top: 10vh;   /* creates breathing room */
+  margin-top: 8vh;     /* pushes it down from the hero */
 }
 .card{
   background: rgba(0,0,0,.35);
@@ -245,4 +246,16 @@ main > *{
 }
 .hero{
   background-position: center 20%;
+}
+.hero{
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+
+  background-image: url("assets/img/hero-home.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /* THIS IS THE KEY */
+  background-position: center bottom;
 }
