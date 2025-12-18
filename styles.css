@@ -257,5 +257,9 @@ main > *{
   background-size: cover;
 
   /* THIS IS THE KEY */
-  background-position: center bottom;
+background-position: center 85%;
+}
+.hero{
+  padding-bottom: 6vh;
+  box-sizing: border-box;
 }
