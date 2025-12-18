@@ -235,3 +235,24 @@ background-image: url("assets/img/poster-bg-optimized.jpg");
 .hero-bg{
   display: none;
 }
+/* === FINAL AUTHORITY: POSTER BACKGROUND === */
+html, body { height: 100%; }
+
+body{
+  background-color: #000 !important; /* fallback */
+  background-image: url("assets/img/poster-bg-optimized.jpg") !important;
+  background-size: cover !important;
+  background-position: center top !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important; /* use fixed later if you want */
+}
+
+/* Nothing should paint over the poster */
+.section,
+.hero,
+.why{
+  background: transparent !important;
+}
+
+/* Kill the old hero background layer */
+.hero-bg{ display: none !important; }
