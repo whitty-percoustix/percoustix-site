@@ -91,9 +91,6 @@ body{
   inset: 0;
   background: url("assets/img/hero-bg.png") center top / cover no-repeat;
   z-index: 0;
-
-  /* DEBUG: show me the layer exists */
-  outline: 3px solid lime;
 }
 
 .hero-title{
