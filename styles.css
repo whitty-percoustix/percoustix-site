@@ -231,3 +231,7 @@ main::before{
 body{
 background-image: url("assets/img/poster-bg-optimized.jpg");
 }
+/* Disable hero background image so hero uses poster background */
+.hero-bg{
+  display: none;
+}
