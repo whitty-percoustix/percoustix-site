@@ -190,3 +190,40 @@ body{
     text-align: right;
   }
 }
+/* ===============================
+   TEMP FULL-PAGE POSTER BACKGROUND
+   =============================== */
+html, body {
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  color: #fff;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  background-image: url("assets/img/hero-bg.png"); /* TEMP stand-in */
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.section{
+  background: transparent;
+}
+main{
+  position: relative;
+}
+
+main::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,.15),
+    rgba(0,0,0,.55)
+  );
+  z-index: -1;
+}
