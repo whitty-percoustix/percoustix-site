@@ -612,3 +612,34 @@ main{
     0 0 60px rgba(47,211,255,.35),
     0 40px 120px rgba(0,0,0,.65);
 }
+.how-media{
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.video-glow-frame{
+  width: 100%;
+  max-width: 720px;      /* ← THIS controls size */
+  border-radius: 22px;
+  padding: 6px;
+
+  background: linear-gradient(
+    135deg,
+    rgba(47,211,255,.6),
+    rgba(47,211,255,.15),
+    rgba(47,211,255,.6)
+  );
+
+  box-shadow:
+    0 0 0 1px rgba(47,211,255,.45),
+    0 0 40px rgba(47,211,255,.25);
+}
+
+.video-glow-frame video{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+  background: #000;
+}
