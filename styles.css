@@ -148,10 +148,10 @@ main{
   z-index: 1;
 }
 
-/* 3D-ish headline */
+/* 3D-ish headline (CENTERED) */
 .space-title{
-  position: relative;
-  right: 4.5vw;
+  position: absolute;
+  left: 50%;
   top: 18vh;
   margin: 0;
 
@@ -160,9 +160,16 @@ main{
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #fff;
+  white-space: nowrap;
 
-  transform-origin: right top;
-  transform: perspective(1000px) rotateX(12deg) rotateY(-18deg) rotateZ(8deg);
+  /* center first, then do the 3D tilt */
+  transform-origin: center top;
+  transform:
+    translateX(-50%)
+    perspective(1000px)
+    rotateX(12deg)
+    rotateY(-18deg)
+    rotateZ(8deg);
 
   text-shadow:
     0 3px 0 rgba(0,0,0,.55),
@@ -248,14 +255,46 @@ main{
 }
 
 /* Responsive */
-@media (max-width: 980px){
-  .nav{ display:none; }
-  .nav-toggle{ display:inline-flex; }
+/* 3D-ish headline (CENTERED) */
+.space-title{
+  position: absolute;
+  left: 50%;
+  top: 18vh;
+  margin: 0;
 
-  .space-title{
-    right: 4vw;
-    top: 20vh;
-    white-space: normal;
-    max-width: 88vw;
-  }
+  font-family: "Bebas Neue", Inter, sans-serif;
+  font-size: clamp(44px, 6.2vw, 96px);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #fff;
+  white-space: nowrap;
+
+  /* center first, then do the 3D tilt */
+  transform-origin: center top;
+  transform:
+    translateX(-50%)
+    perspective(1000px)
+    rotateX(12deg)
+    rotateY(-18deg)
+    rotateZ(8deg);
+
+  text-shadow:
+    0 3px 0 rgba(0,0,0,.55),
+    0 6px 0 rgba(0,0,0,.50),
+    0 9px 0 rgba(0,0,0,.45),
+    0 12px 12px rgba(0,0,0,.70);
+
+  -webkit-font-smoothing: antialiased;
+  z-index: 2;
+}
+
+.space-title::after{
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: translate(10px, 8px);
+  color: rgba(0,0,0,.70);
+  filter: blur(.4px);
+  opacity: .95;
 }
