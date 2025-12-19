@@ -643,3 +643,54 @@ main{
   border-radius: 16px;
   background: #000;
 }
+/* HOW IT WORKS — spacing & breathing room */
+
+.how-it-works{
+  padding: 120px 0; /* overall section breathing room */
+}
+
+.how-it-works .section-title-big{
+  margin-bottom: 56px; /* space under the heading */
+  text-align: center;
+}
+
+/* Steps layout */
+.how-steps{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 48px; /* space between steps */
+  margin-bottom: 72px; /* space before video */
+}
+
+.how-step{
+  text-align: center;
+}
+
+.step-number{
+  margin-bottom: 12px;
+}
+
+.how-step h3{
+  margin: 12px 0 10px;
+}
+
+.how-step p{
+  margin: 0;
+  line-height: 1.6;
+  opacity: .9;
+}
+
+/* Video spacing */
+.how-media{
+  margin-top: 24px;
+  margin-bottom: 28px;
+}
+
+/* Caption under video */
+.how-caption{
+  margin-top: 28px;
+  text-align: center;
+  font-size: 18px;
+  letter-spacing: .4px;
+  opacity: .85;
+}
