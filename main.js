@@ -48,13 +48,15 @@ if (navToggle && mobileNav) {
    Pad-card click-to-reveal
    (Why Percoustix)
 ========================= */
-document.querySelectorAll(".pad-card").forEach((card) => {
-  const toggleFlip = () => {
-    const flipped = card.classList.toggle("is-flipped");
-    card.setAttribute("aria-pressed", flipped ? "true" : "false");
-  };
-
-  card.addEventListener("click", toggleFlip);
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".pad-card").forEach((card) => {
+    card.addEventListener("click", (e) => {
+      e.preventDefault();
+      card.classList.toggle("is-flipped");
+      card.setAttribute("aria-pressed", card.classList.contains("is-flipped"));
+    });
+  });
+});
 
   // Keyboard accessibility (Enter / Space)
   card.addEventListener("keydown", (e) => {
@@ -63,4 +65,4 @@ document.querySelectorAll(".pad-card").forEach((card) => {
       toggleFlip();
     }
   });
-});
+
