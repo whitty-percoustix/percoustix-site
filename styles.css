@@ -769,3 +769,13 @@ main{
 #mlb2-34856710 button {
   text-align: center;
 }
+.join-band {
+  text-align: center;
+}
+
+.join-band .section-subtitle,
+.join-band .join-meta {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
