@@ -430,6 +430,7 @@ main{
   cursor: pointer;
   perspective: 1200px;
 }
+.pad-card{ z-index: 5; }
 
 .pad-face{
   position: absolute;
