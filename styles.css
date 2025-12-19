@@ -445,6 +445,171 @@ main{
   transform-style: preserve-3d;
   transition: transform 520ms ease;
 }
+/* --- PAD CARDS: single, clean 3D flip system --- */
+
+/* Button reset + layout */
+.pad-card{
+  position: relative;
+  width: 100%;
+  min-height: 240px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  color: var(--white);
+  outline: none;
+
+  perspective: 1200px;   /* enables 3D flip */
+  transform: translateZ(0);
+}
+
+/* The pad shape: clipped corners to mimic the product silhouette */
+.pad-card::before{
+  content:"";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  clip-path: polygon(
+    6% 14%,
+    16% 6%,
+    84% 6%,
+    94% 16%,
+    94% 84%,
+    84% 94%,
+    16% 94%,
+    6% 84%
+  );
+
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.10), rgba(255,255,255,0) 45%),
+    radial-gradient(circle at 25% 20%, rgba(47,211,255,.18), rgba(0,0,0,0) 55%),
+    rgba(0,0,0,.38);
+
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow:
+    0 14px 45px rgba(0,0,0,.55),
+    0 0 0 1px rgba(47,211,255,.18) inset;
+
+  backdrop-filter: blur(8px);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+/* Inner surface hint */
+.pad-card::after{
+  content:"";
+  position: absolute;
+  inset: 12px;
+  border-radius: 18px;
+  clip-path: polygon(
+    6% 14%,
+    16% 6%,
+    84% 6%,
+    94% 16%,
+    94% 84%,
+    84% 94%,
+    16% 94%,
+    6% 84%
+  );
+
+  background:
+    radial-gradient(circle at 30% 25%, rgba(255,255,255,.08), rgba(255,255,255,0) 55%),
+    linear-gradient(180deg, rgba(47,211,255,.08), rgba(0,0,0,0) 55%);
+  opacity: .9;
+  pointer-events: none;
+}
+
+.pad-card:hover::before{
+  border-color: rgba(47,211,255,.55);
+  box-shadow:
+    0 18px 70px rgba(0,0,0,.6),
+    0 0 0 1px rgba(47,211,255,.28) inset,
+    0 0 22px rgba(47,211,255,.22);
+  transform: translateY(-2px);
+}
+
+.pad-card:focus-visible::before{
+  border-color: rgba(47,211,255,.8);
+  box-shadow:
+    0 18px 70px rgba(0,0,0,.6),
+    0 0 0 2px rgba(47,211,255,.7) inset,
+    0 0 24px rgba(47,211,255,.28);
+}
+
+/* Faces (3D flip) */
+.pad-face{
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 22px;
+
+  z-index: 1;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 520ms ease;
+}
+
+/* default sides */
+.pad-front{ transform: rotateY(0deg); }
+.pad-back { transform: rotateY(180deg); }
+
+/* flipped state */
+.pad-card.is-flipped .pad-front{ transform: rotateY(-180deg); }
+.pad-card.is-flipped .pad-back { transform: rotateY(0deg); }
+
+/* Keep grid clickable above any weird overlays */
+.pad-grid{ position: relative; z-index: 2; }
+
+/* Typography */
+.pad-kicker{
+  font-family: Orbitron, Inter, sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  color: rgba(47,211,255,.95);
+  text-transform: uppercase;
+}
+
+.pad-title{
+  font-family: "Bebas Neue", Inter, sans-serif;
+  font-size: 34px;
+  letter-spacing: 1px;
+  line-height: 1;
+  text-transform: uppercase;
+  text-shadow: 0 10px 30px rgba(0,0,0,.75);
+}
+
+.pad-body{
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.45;
+  color: rgba(255,255,255,.92);
+  max-width: 38ch;
+}
+
+.pad-hint{
+  margin-top: 10px;
+  font-family: Orbitron, Inter, sans-serif;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pad-hint::before{
+  content:"";
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(47,211,255,.85);
+  box-shadow: 0 0 14px rgba(47,211,255,.45);
+  opacity: .9;
+}
 
 /* default sides */
 .pad-front{ transform: rotateY(0deg); }
