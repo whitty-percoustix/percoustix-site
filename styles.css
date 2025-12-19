@@ -14,12 +14,21 @@ body{
   overflow-y: auto;       /* allow scrolling */
 
   /* ONE continuous underwater background for the whole site */
-  background-color: #020b10; /* fallback while image loads */
-  background-image: url("assets/img/underwater-bg.jpg");
+body{
+  background-color: #020b10;
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(2,11,16,.85),
+      rgba(2,11,16,.65) 35%,
+      rgba(2,11,16,.55) 100%
+    ),
+    url("assets/img/underwater-bg.jpg");
+
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center top;
-  background-attachment: scroll; /* change to fixed if you want parallax-ish */
+}
 }
 
 /* Header overlay */
