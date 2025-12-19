@@ -554,9 +554,10 @@ main{
   opacity: .9;
 }
 
-/* Demo video placeholder */
 .how-media{
-  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
 }
 
 .video-placeholder{
@@ -592,4 +593,22 @@ main{
 .why,
 .how-it-works{
   padding-top: 12vh;
+}
+.video-glow-frame{
+  position: relative;
+  width: min(900px, 100%);
+  border-radius: 22px;
+  padding: 6px;
+}
+.video-glow-frame video{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 18px;
+}
+.video-glow-frame{
+  box-shadow:
+    0 0 0 1px rgba(47,211,255,.25),
+    0 0 60px rgba(47,211,255,.35),
+    0 40px 120px rgba(0,0,0,.65);
 }
