@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How It Works · Percoustix</title>
+  <meta name="description" content="How Percoustix works: attach, assign, play. Turn your guitar into a full rhythm section." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Orbitron:wght@500;700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Your existing global styles -->
+  <link rel="stylesheet" href="styles.css?v=1" />
+  <!-- Page-specific “crazy vibe” styles -->
+  <link rel="stylesheet" href="how-it-works.css?v=1" />
+</head>
+
+<body class="howitworks-page">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="logo" href="index.html#top" aria-label="Percoustix home">
+        <span class="logo-mark">P</span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="index.html">HOME</a>
+        <a href="how-it-works.html" class="active">HOW IT WORKS</a>
+        <a href="index.html#our-story">OUR STORY</a>
+        <a href="index.html#community">COMMUNITY</a>
+        <a href="index.html#shop">SHOP</a>
+      </nav>
+
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+        MENU
+      </button>
+
+      <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+        <a href="index.html">HOME</a>
+        <a href="how-it-works.html">HOW IT WORKS</a>
+        <a href="index.html#our-story">OUR STORY</a>
+        <a href="index.html#community">COMMUNITY</a>
+        <a href="index.html#shop">SHOP</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="howitworks-main">
+    <!-- HERO / POSTER CANVAS -->
+    <section class="howitworks-hero" aria-label="How it Works hero">
+      <div class="howitworks-hero-inner">
+        <h1 class="howitworks-title" data-text="HOW IT WORKS">
+          HOW IT WORKS
+        </h1>
+
+        <p class="howitworks-subtitle">
+          Attach. Assign. Play. Turn your guitar into a one-person rhythm section.
+        </p>
+
+        <div class="howitworks-cta-row">
+          <a class="btn btn-primary" href="#video">WATCH THE DEMO</a>
+          <a class="btn btn-ghost" href="#steps">SEE THE STEPS</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEPS -->
+    <section class="howitworks-section" id="steps">
+      <div class="container">
+        <h2 class="section-title section-title-big">3 Steps</h2>
+
+        <div class="how-grid">
+          <article class="how-card">
+            <div class="how-num">01</div>
+            <h3>Attach</h3>
+            <p>Mount Percoustix pads on your guitar where your hand naturally moves.</p>
+          </article>
+
+          <article class="how-card">
+            <div class="how-num">02</div>
+            <h3>Assign</h3>
+            <p>Map pads to drum sounds or kits. Kick, snare, hat, whatever your groove needs.</p>
+          </article>
+
+          <article class="how-card">
+            <div class="how-num">03</div>
+            <h3>Play</h3>
+            <p>Strum and tap in the same performance. Rhythm + harmony, together.</p>
+          </article>
+        </div>
+
+        <!-- Optional: add your “graphic” later -->
+        <div class="how-graphic-placeholder">
+          <div class="how-graphic-box">
+            <div class="how-graphic-title">Signal Flow (optional)</div>
+            <div class="how-graphic-body">
+              Drop your diagram/graphic here when it’s ready.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIDEO -->
+    <section class="howitworks-section" id="video">
+      <div class="container">
+        <h2 class="section-title section-title-big">Watch It</h2>
+
+        <div class="video-glow-frame">
+          <video
+            src="assets/video/how-it-works-explainer.mp4"
+            controls
+            playsinline
+            preload="metadata"
+          ></video>
+        </div>
+
+        <p class="how-caption">
+          Tip: Keep this video tight. If it’s longer than ~60–90 seconds, people will bounce.
+        </p>
+      </div>
+    </section>
+
+    <!-- FAQ-ish -->
+    <section class="howitworks-section" id="faq">
+      <div class="container">
+        <h2 class="section-title section-title-big">Quick Answers</h2>
+
+        <div class="faq-grid">
+          <details class="faq">
+            <summary>Does it change how I play guitar?</summary>
+            <p>No. The goal is to add rhythm where your hand already moves, not force a new technique.</p>
+          </details>
+
+          <details class="faq">
+            <summary>Is it loud on the guitar acoustically?</summary>
+            <p>The pads aren’t “audible drums” on the guitar body. The sound comes through your rig.</p>
+          </details>
+
+          <details class="faq">
+            <summary>What gear do I need?</summary>
+            <p>We’ll list supported setups here once you confirm the exact signal chain.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p>© <span id="year"></span> Percoustix</p>
+      </div>
+    </footer>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
