@@ -193,24 +193,26 @@ main{
   z-index: 0;
 }
 
-/* Smooth blend from hero into underwater */
+/* Water seam image at the bottom of the hero */
 .hero::after{
   content:"";
   position:absolute;
-  left:0; right:0; bottom:-1px;
-  height: 600px;              /* bigger = softer */
+  left:0;
+  right:0;
+  bottom:-1px;
+
+  height: 220px;              /* tweak: 160–320px */
   pointer-events:none;
+  z-index: 2;
 
-  background: linear-gradient(
-    to bottom,
-    rgba(2,11,16,0) 0%,
-    rgba(2,11,16,.15) 20%,
-    rgba(2,11,16,.35) 55%,
-    rgba(2,11,16,.75) 85%,
-    rgba(2,11,16,1) 100%
-  );
+  background-image: url("assets/img/water-seam.png");
+  background-repeat: repeat-x;
+  background-size: cover;
+  background-position: center bottom;
 
-  z-index: 1;
+  /* Blend it in */
+  opacity: 0.9;               /* tweak */
+  filter: blur(0px);          /* optional */
 }
 
 
