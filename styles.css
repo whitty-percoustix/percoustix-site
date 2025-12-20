@@ -192,28 +192,8 @@ main{
   );
   z-index: 0;
 }
+.hero{ overflow: hidden; }
 
-/* Water seam image at the bottom of the hero */
-.hero::after{
-  content:"";
-  position:absolute;
-  left:0;
-  right:0;
-  bottom:-1px;
-
-  height: 220px;              /* tweak: 160–320px */
-  pointer-events:none;
-  z-index: 2;
-
-  background-image: url("assets/img/water-seam.png");
-  background-repeat: repeat-x;
-  background-size: cover;
-  background-position: center bottom;
-
-  /* Blend it in */
-  opacity: 0.9;               /* tweak */
-  filter: blur(0px);          /* optional */
-}
 /* Water seam between hero and content */
 .water-seam{
   position: relative;
@@ -830,4 +810,49 @@ main{
   height: 180px;      /* adjust */
   object-fit: cover;
   object-position: center;
+}
+.water-seam{
+  position: relative;
+  z-index: 50;              /* above hero fades */
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 0;
+  pointer-events: none;
+
+  /* pull it UP onto the seam, but not into oblivion */
+  margin-top: -60px;        /* adjust */
+  margin-bottom: -90px;     /* adjust */
+}
+
+.water-seam img{
+  display: block;
+  width: 100%;
+  height: 260px;            /* THIS is what stops the top getting cut */
+  object-fit: cover;
+  object-position: center top;
+}
+/* ===== WATER SEAM (single source of truth) ===== */
+
+.water-seam{
+  position: relative;
+  z-index: 50;
+
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 0;
+  pointer-events: none;
+
+  /* seam positioning */
+  margin-top: -110px;     /* pulls into hero */
+  margin-bottom: -120px;  /* drips into WHY */
+}
+
+.water-seam img{
+  display: block;
+  width: 100%;
+  height: 260px;          /* controls how much "seam" you see */
+  object-fit: cover;
+  object-position: center top;
 }
