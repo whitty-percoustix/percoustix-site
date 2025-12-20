@@ -1,3 +1,20 @@
+/* HOW IT WORKS — space background */
+.howitworks-page {
+  background-color: #02020a;
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(2,11,16,.75),
+      rgba(2,11,16,.9)
+    ),
+    url("assets/img/hero-how-it-works.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+  background-attachment: scroll;
+}
+
+
 /* Page-only “poster vibe” layer */
 /* This file is SAFE to be loud and busy without breaking the homepage. */
 
