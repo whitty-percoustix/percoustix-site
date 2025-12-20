@@ -214,6 +214,19 @@ main{
   opacity: 0.9;               /* tweak */
   filter: blur(0px);          /* optional */
 }
+/* Water seam between hero and content */
+.water-seam{
+  position: relative;
+  z-index: 5;                /* sit above backgrounds */
+  margin-top: -140px;        /* pulls seam upward over hero */
+  pointer-events: none;
+}
+
+.water-seam img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
 
 /* BELOW HERO: let the body’s underwater background show through */
