@@ -760,7 +760,7 @@ main{
   pointer-events: none;
 
   /* seam positioning */
-  margin-top: -110px;     /* pulls into hero */
+  margin-top: -90px;     /* pulls into hero */
   margin-bottom: -120px;  /* drips into WHY */
 }
 
