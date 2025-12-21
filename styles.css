@@ -883,4 +883,10 @@ main{
     max-width: 360px;
   }
 }
+/* Mobile: bias hero crop toward the LEFT so mascots show */
+@media (max-width: 980px){
+  .hero{
+    background-position: 20% center; /* 0% = hard left, 50% = center */
+  }
+}
 
