@@ -208,3 +208,21 @@ body { outline: 6px solid hotpink; }
   .faq-grid{ grid-template-columns: 1fr; }
   .howitworks-title{ letter-spacing: 6px; }
 }
+
+/* Desktop tweak: reduce video container size so the whole video shows
+   on large viewports while leaving mobile behavior unchanged. */
+@media (min-width: 981px) {
+  .video-glow-frame{
+    max-width: 560px; /* make the frame smaller on large screens */
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+
+  .video-glow-frame video{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 60vh; /* cap height so the whole video fits in viewport */
+  }
+}
