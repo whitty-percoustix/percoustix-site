@@ -1036,3 +1036,21 @@ main{
   border-color: rgba(255,10,213,.35);
 }
 
+/* Desktop tweak: make video containers slightly smaller so the whole
+   video shows on large viewports, but keep mobile behavior unchanged. */
+@media (min-width: 981px) {
+  /* reduce the glow frame on wide screens so the video isn't huge */
+  .video-glow-frame{
+    max-width: 560px; /* smaller than the previous 720px */
+    width: 100%;
+  }
+
+  /* make sure the video scales to fit and doesn't overflow vertically */
+  .video-glow-frame video{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 60vh; /* cap height to viewport so it always fits */
+  }
+}
+
