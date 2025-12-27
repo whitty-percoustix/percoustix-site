@@ -50,6 +50,7 @@ if (navToggle && mobileNav) {
    Pad-card click-to-reveal
    (Why Percoustix)
 ========================= */
+// Put pad-card keyboard access and demo wiring inside DOMContentLoaded
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".pad-card").forEach((card) => {
     card.addEventListener("click", (e) => {
@@ -57,26 +58,23 @@ document.addEventListener("DOMContentLoaded", () => {
       card.classList.toggle("is-flipped");
       card.setAttribute("aria-pressed", card.classList.contains("is-flipped"));
     });
+
+    // Keyboard accessibility (Enter / Space)
+    card.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        card.classList.toggle("is-flipped");
+        card.setAttribute("aria-pressed", card.classList.contains("is-flipped"));
+      }
+    });
   });
-});
 
-  // Keyboard accessibility (Enter / Space)
-  card.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") {
-      e.preventDefault();
-      toggleFlip();
-    }
-  });
+  /* js from demo page: wire hotspots to the demo panel */
+  const titleEl = document.getElementById("demoTitle");
+  const bodyEl  = document.getElementById("demoBody");
+  const spots   = document.querySelectorAll(".hotspot");
 
-  /* js from demo page */
-
-  (() => {
-    const titleEl = document.getElementById("demoTitle");
-    const bodyEl  = document.getElementById("demoBody");
-    const spots   = document.querySelectorAll(".hotspot");
-
-    if (!titleEl || !bodyEl || !spots.length) return;
-
+  if (titleEl && bodyEl && spots.length) {
     spots.forEach(btn => {
       btn.addEventListener("click", () => {
         const title = btn.getAttribute("data-title") || "Details";
@@ -90,4 +88,5 @@ document.addEventListener("DOMContentLoaded", () => {
         btn.classList.add("is-active");
       });
     });
-  })();
+  }
+});

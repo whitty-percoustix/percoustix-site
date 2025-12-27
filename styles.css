@@ -965,6 +965,17 @@ main{
   outline-offset: 4px;
 }
 
+/* Make hotspots give a temporary pink glow on hover/focus (without clicking) */
+.hotspot:hover,
+.hotspot:focus{
+  background: rgba(255,10,213,.95);
+  box-shadow: 0 0 0 1px rgba(255,10,213,.35), 0 0 26px rgba(255,10,213,.55);
+}
+.hotspot:hover .hotspot-ring,
+.hotspot:focus .hotspot-ring{
+  border-color: rgba(255,10,213,.35);
+}
+
 .hotspot-ring{
   position: absolute;
   inset: -14px;
