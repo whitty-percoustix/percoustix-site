@@ -29,6 +29,27 @@ body{
   background-attachment: scroll;
 }
 
+/* Texture/grain overlay for poster feel */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(255, 255, 255, 0.03) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(255, 255, 255, 0.03) 3px
+    );
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
 /* Header overlay */
 .site-header{
   position: fixed;
@@ -171,13 +192,16 @@ main{
   max-height: 1200px;
   overflow: visible;
 
-  background-image: url("assets/img/hero-home.jpg");
+  background-image: url("assets/img/hero-bg-2.png");
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center 60%;
+  background-position: center center;
 
   /* keep headline clear of fixed header */
   padding-top: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Slight brightening in the hero only (SAFE: no blend-mode) */
@@ -192,11 +216,103 @@ main{
   );
   z-index: 0;
 }
+
+/* Scan line effect for sci-fi vibe */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(47, 211, 255, 0.05) 50%,
+    transparent 100%
+  );
+  animation: scan 4s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes scan {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
 .hero{ overflow: visible; }
 
+/* Product Image - Center Stage */
+.hero-product {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 500px;
+  width: 80%;
+}
 
+.product-image {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 30px 80px rgba(0,0,0,.7))
+          drop-shadow(0 0 40px rgba(47,211,255,.3));
+  animation: product-float 6s ease-in-out infinite;
+}
 
-/* BELOW HERO: let the body’s underwater background show through */
+@keyframes product-float {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+}
+
+/* Mascot Stickers Container */
+.mascot-stickers {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.mascot {
+  position: absolute;
+  filter: drop-shadow(0 25px 60px rgba(0,0,0,.7));
+  opacity: 0.98;
+}
+
+/* Astronaut & Bear Band (bottom left, on the moon) */
+.mascot-band {
+  width: 420px;
+  bottom: 8%;
+  left: 3%;
+  animation: float-drift 8s ease-in-out infinite;
+}
+
+/* UFO Turntable (top right) */
+.mascot-ufo {
+  width: 340px;
+  top: 12%;
+  right: 5%;
+  animation: float-drift 9s ease-in-out infinite 2s;
+}
+
+@keyframes float-drift {
+  0%, 100% { 
+    transform: translateY(0) rotate(-2deg); 
+  }
+  25% { 
+    transform: translateY(-12px) rotate(1deg); 
+  }
+  50% { 
+    transform: translateY(-20px) rotate(-1deg); 
+  }
+  75% { 
+    transform: translateY(-8px) rotate(0.5deg); 
+  }
+}
+
+/* BELOW HERO: let the body's underwater background show through */
 .why, .section, .footer{
   background: transparent;
 }
@@ -258,11 +374,12 @@ main{
   padding: 26px 0;
   border-top: 1px solid rgba(255,255,255,.08);
 }
-/* 3D-ish headline (biased center to the right) */
+
+/* 3D-ish headline (positioned at top of hero) */
 .space-title{
   position: absolute;
-  left: 58%;          /* tweak 56–62% */
-  top: 18vh;
+  left: 50%;
+  top: 12vh;
   margin: 0;
 
   font-family: "Bebas Neue", Inter, sans-serif;
@@ -272,13 +389,13 @@ main{
   color: #fff;
   white-space: nowrap;
 
-  transform-origin: center top;
+  transform-origin: center center;
   transform:
     translateX(-50%)
     perspective(1000px)
-    rotateX(12deg)
-    rotateY(-18deg)
-    rotateZ(8deg);
+    rotateX(8deg)
+    rotateY(-10deg)
+    rotateZ(4deg);
 
   text-shadow:
     0 3px 0 rgba(0,0,0,.55),
@@ -287,7 +404,7 @@ main{
     0 12px 12px rgba(0,0,0,.70);
 
   -webkit-font-smoothing: antialiased;
-  z-index: 2;
+  z-index: 4;
 }
 
 .space-title::after{
@@ -295,11 +412,29 @@ main{
   position: absolute;
   inset: 0;
   z-index: -1;
-  transform: translate(10px, 8px);
+  transform: translate(8px, 6px);
   color: rgba(0,0,0,.70);
   filter: blur(.4px);
   opacity: .95;
 }
+
+/* Glitch effect on hover */
+.space-title {
+  transition: all 0.1s ease;
+}
+
+.space-title:hover {
+  animation: glitch 0.3s ease;
+}
+
+@keyframes glitch {
+  0% { transform: translateX(-50%) perspective(1000px) rotateX(8deg) rotateY(-10deg) rotateZ(4deg); }
+  25% { transform: translateX(-50%) perspective(1000px) rotateX(8deg) rotateY(-10deg) rotateZ(4deg) translateX(3px); }
+  50% { transform: translateX(-50%) perspective(1000px) rotateX(8deg) rotateY(-10deg) rotateZ(4deg) translateX(-3px); }
+  75% { transform: translateX(-50%) perspective(1000px) rotateX(8deg) rotateY(-10deg) rotateZ(4deg) translateX(2px); }
+  100% { transform: translateX(-50%) perspective(1000px) rotateX(8deg) rotateY(-10deg) rotateZ(4deg); }
+}
+
 /* ============ PAD-SHAPED CLICK-TO-REVEAL CARDS (CLEAN) ============ */
 
 .pad-grid{
@@ -386,15 +521,16 @@ main{
   pointer-events: none;
 }
 
-.pad-card:hover::before {
+.pad-card:hover::before{
   border-color: rgba(47,211,255,.55);
   box-shadow:
     0 18px 70px rgba(0,0,0,.6),
     0 0 0 1px rgba(47,211,255,.28) inset,
     0 0 40px rgba(47,211,255,.4),
-    0 0 80px rgba(47,211,255,.2); /* Extra glow */
-  transform: translateY(-4px) scale(1.02); /* Bigger lift */
+    0 0 80px rgba(47,211,255,.2);
+  transform: translateY(-4px) scale(1.02);
 }
+
 .pad-card:focus-visible::before{
   border-color: rgba(47,211,255,.8);
   box-shadow:
@@ -600,7 +736,7 @@ main{
   border-radius: 16px;
   background: #000;
 }
-/* HOW IT WORKS — spacing & breathing room */
+/* HOW IT WORKS – spacing & breathing room */
 
 .how-it-works{
   padding: 120px 0; /* overall section breathing room */
@@ -813,28 +949,47 @@ main{
 
   /* HERO */
   .hero{
-    height: 88vh;              /* less “giant poster” on small screens */
+    height: 88vh;              /* less "giant poster" on small screens */
     padding-top: 90px;         /* space for fixed header */
-    background-position: center 55%;
+    background-position: center center;
+  }
+  
+  /* Product smaller on mobile */
+  .hero-product {
+    max-width: 320px;
+    width: 85%;
   }
 
   /* Headline should wrap instead of running off-screen */
   .space-title{
-    position: relative;
-    left: auto;
-    top: auto;
+    position: absolute;
+    left: 50%;
+    top: 8vh;
     margin: 0 auto;
     padding: 0 18px;
     white-space: normal;
     text-align: center;
 
-    transform: none;           /* kill the 3D tilt on mobile */
-    font-size: clamp(40px, 10vw, 64px);
+    transform: translateX(-50%);
+    font-size: clamp(36px, 9vw, 56px);
     line-height: 1.05;
   }
 
   .space-title::after{
-    transform: translate(6px, 6px);
+    transform: translate(4px, 4px);
+  }
+  
+  /* Mascots smaller and repositioned on mobile */
+  .mascot-band {
+    width: 280px;
+    bottom: 5%;
+    left: 2%;
+  }
+  
+  .mascot-ufo {
+    width: 200px;
+    top: 8%;
+    right: 3%;
   }
 
   /* WATER SEAM tweaks for mobile */
@@ -862,7 +1017,7 @@ main{
     padding: 22px 22px 22px 26px; /* less left offset on mobile */
   }
 
-  /* “How it works” section spacing */
+  /* "How it works" section spacing */
   .how-it-works{
     padding: 90px 0;
   }
@@ -1053,6 +1208,8 @@ main{
   /* reduce the glow frame on wide screens so the video isn't huge */
   .video-glow-frame{
     max-width: 560px; /* smaller than the previous 720px */
+    margin-left: auto;
+    margin-right: auto;
     width: 100%;
   }
 
@@ -1064,71 +1221,8 @@ main{
     max-height: 60vh; /* cap height to viewport so it always fits */
   }
 }
-.mascot-float {
-  animation: float-drift 8s ease-in-out infinite;
-  filter: drop-shadow(0 15px 35px rgba(0,0,0,.6));
-}
 
-@keyframes float-drift {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50% { transform: translateY(-20px) rotate(2deg); }
-}
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: 
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.03) 0px,
-      transparent 1px,
-      transparent 2px,
-      rgba(255, 255, 255, 0.03) 3px
-    );
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0.4;
-}
-.space-title {
-  transition: all 0.1s ease;
-}
-
-.space-title:hover {
-  animation: glitch 0.3s ease;
-}
-
-@keyframes glitch {
-  0% { transform: translateX(-50%) perspective(1000px) rotateX(12deg) rotateY(-18deg) rotateZ(8deg); }
-  25% { transform: translateX(-50%) perspective(1000px) rotateX(12deg) rotateY(-18deg) rotateZ(8deg) translateX(3px); }
-  50% { transform: translateX(-50%) perspective(1000px) rotateX(12deg) rotateY(-18deg) rotateZ(8deg) translateX(-3px); }
-  75% { transform: translateX(-50%) perspective(1000px) rotateX(12deg) rotateY(-18deg) rotateZ(8deg) translateX(2px); }
-  100% { transform: translateX(-50%) perspective(1000px) rotateX(12deg) rotateY(-18deg) rotateZ(8deg); }
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(47, 211, 255, 0.05) 50%,
-    transparent 100%
-  );
-  animation: scan 4s linear infinite;
-  pointer-events: none;
-  z-index: 2;
-}
-
-@keyframes scan {
-  0% { transform: translateY(-100%); }
-  100% { transform: translateY(100%); }
-}
+/* Cursor trail effect */
 .cursor-trail {
   position: absolute;
   width: 20px;
