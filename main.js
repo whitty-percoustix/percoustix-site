@@ -90,3 +90,21 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+// Parallax water seam
+window.addEventListener('scroll', () => {
+  const seam = document.querySelector('.water-seam');
+  if (seam) {
+    const scrolled = window.pageYOffset;
+    seam.style.transform = `translateY(${scrolled * 0.3}px)`;
+  }
+});
+// Cursor glow trail
+document.addEventListener('mousemove', (e) => {
+  const trail = document.createElement('div');
+  trail.className = 'cursor-trail';
+  trail.style.left = e.pageX + 'px';
+  trail.style.top = e.pageY + 'px';
+  document.body.appendChild(trail);
+  
+  setTimeout(() => trail.remove(), 500);
+});
