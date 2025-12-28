@@ -248,7 +248,7 @@ main{
   position: absolute;
   z-index: 3;
   top: 52%; /* MOVED DOWN - was 50% */
-  left: 48%; /* MOVED LEFT - was 50% */
+  left: 54%; /* MOVED RIGHT - was 48% - water flows from guitar */
   transform: translate(-50%, -50%);
   max-width: 700px; /* LARGER - was 500px */
   width: 85%;
@@ -421,6 +421,10 @@ main{
   -webkit-font-smoothing: antialiased;
   z-index: 4;
 }
+
+/* Show/hide title versions */
+.title-mobile { display: none; }
+.title-desktop { display: inline; }
 
 .space-title::after{
   content: attr(data-text);
@@ -982,23 +986,28 @@ main{
     top: 8vh;
     margin: 0 auto;
     padding: 0 18px;
-    white-space: normal;
+    white-space: pre-line; /* CHANGED - allows line breaks */
     text-align: center;
 
     transform: translateX(-50%);
     font-size: clamp(36px, 9vw, 56px);
-    line-height: 1.05;
+    line-height: 1.1;
   }
 
   .space-title::after{
     transform: translate(4px, 4px);
+    white-space: pre-line; /* Match parent */
   }
+  
+  /* Switch to mobile title version */
+  .title-desktop { display: none; }
+  .title-mobile { display: inline; }
   
   /* Mascots smaller and repositioned on mobile */
   .mascot-band {
     width: 280px;
     bottom: 1%; /* MOVED DOWN on mobile too */
-    left: 2%;
+    left: -8%; /* MOVED FAR LEFT - astronaut face visible, guitar can be cut off */
   }
   
   .mascot-ufo {
