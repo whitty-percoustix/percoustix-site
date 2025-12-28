@@ -165,6 +165,8 @@
   position: relative;
   border-radius: 20px;
   overflow: hidden;
+  max-width: 350px; /* SMALLER - makes photos more compact */
+  margin: 0 auto; /* Centers the photos in their grid cell */
   box-shadow: 
     0 20px 60px rgba(0,0,0,.7),
     0 0 0 1px rgba(255,255,255,.1);
@@ -182,22 +184,6 @@
   width: 100%;
   height: auto;
   display: block;
-}
-
-.photo-label {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  background: rgba(0,0,0,.8);
-  color: #fff;
-  font-family: "Bebas Neue", Inter, sans-serif;
-  font-size: 20px;
-  letter-spacing: 2px;
-  padding: 8px 16px;
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(47,211,255,.4);
-  box-shadow: 0 4px 20px rgba(0,0,0,.6);
 }
 
 /* CTA */
@@ -264,11 +250,8 @@
     padding: 20px;
   }
 
-  .photo-label {
-    font-size: 16px;
-    bottom: 12px;
-    right: 12px;
-    padding: 6px 12px;
+  .story-photo {
+    max-width: 280px; /* Even smaller on mobile */
   }
 }
 
