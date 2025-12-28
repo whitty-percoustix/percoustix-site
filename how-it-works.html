@@ -103,8 +103,7 @@
           <img src="assets/img/flow-preview.png" alt="Percoustix Signal Flow Preview" class="flow-preview-img" id="flowPreviewImg" style="cursor: pointer;">
           
           <div class="flow-cta">
-            <button class="btn btn-primary" id="viewFlowBtn">View Full Signal Flow Diagram</button>
-            <a href="assets/img/percoustix-flow-chart.png" download class="btn btn-ghost">
+            <a href="assets/img/percoustix-flow-chart.png" download class="btn btn-primary">
               Download Diagram
             </a>
           </div>
@@ -241,19 +240,12 @@
   <script src="main.js"></script>
   <script>
     // Flow chart modal functionality
-    const viewFlowBtn = document.getElementById('viewFlowBtn');
     const flowPreviewImg = document.getElementById('flowPreviewImg');
     const closeFlowBtn = document.getElementById('closeFlowBtn');
     const flowModal = document.getElementById('flowModal');
     const flowModalOverlay = document.getElementById('flowModalOverlay');
 
-    if (viewFlowBtn && flowModal) {
-      // Open modal when clicking the button
-      viewFlowBtn.addEventListener('click', () => {
-        flowModal.classList.add('is-open');
-        document.body.style.overflow = 'hidden';
-      });
-
+    if (flowPreviewImg && flowModal) {
       // Open modal when clicking the preview image
       flowPreviewImg.addEventListener('click', () => {
         flowModal.classList.add('is-open');
