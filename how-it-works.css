@@ -378,3 +378,170 @@
 .hotspot.is-active .hotspot-ring{
   border-color: rgba(255,10,213,.35);
 }
+
+/* =========================
+   SIGNAL FLOW DIAGRAM
+========================= */
+
+.flow-section {
+  background: rgba(0,0,0,.25);
+  border-top: 1px solid rgba(255,255,255,.08);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.flow-intro {
+  max-width: 800px;
+  margin: 0 auto 30px;
+  text-align: center;
+  font-size: 18px;
+  color: rgba(255,255,255,.88);
+  text-shadow: 0 4px 16px rgba(0,0,0,.7);
+}
+
+.flow-preview-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.flow-preview-img {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  border-radius: 18px;
+  border: 1px solid rgba(47,211,255,.25);
+  box-shadow: 
+    0 0 40px rgba(47,211,255,.15),
+    0 20px 60px rgba(0,0,0,.6);
+  margin-bottom: 24px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.flow-preview-img:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 0 50px rgba(47,211,255,.25),
+    0 24px 70px rgba(0,0,0,.7);
+}
+
+.flow-cta {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Modal Styles */
+.flow-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.flow-modal.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.flow-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.92);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.flow-modal-content {
+  position: relative;
+  z-index: 1;
+  width: 90vw;
+  max-width: 1400px;
+  max-height: 90vh;
+  background: rgba(10,10,20,.95);
+  border: 1px solid rgba(47,211,255,.3);
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 
+    0 0 60px rgba(47,211,255,.3),
+    0 30px 100px rgba(0,0,0,.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.flow-modal.is-open .flow-modal-content {
+  transform: scale(1);
+}
+
+.flow-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: rgba(255,255,255,.1);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 2;
+}
+
+.flow-modal-close:hover {
+  background: rgba(255,10,213,.9);
+  transform: rotate(90deg);
+}
+
+.flow-modal-close:focus-visible {
+  outline: 3px solid rgba(47,211,255,.7);
+  outline-offset: 3px;
+}
+
+.flow-modal-img {
+  width: 100%;
+  height: auto;
+  max-height: calc(90vh - 180px);
+  object-fit: contain;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.flow-download-btn {
+  margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 980px) {
+  .flow-modal-content {
+    width: 95vw;
+    padding: 20px;
+    max-height: 95vh;
+  }
+
+  .flow-modal-img {
+    max-height: calc(95vh - 160px);
+  }
+
+  .flow-modal-close {
+    width: 40px;
+    height: 40px;
+    top: 15px;
+    right: 15px;
+  }
+
+  .flow-intro {
+    font-size: 16px;
+  }
+}
