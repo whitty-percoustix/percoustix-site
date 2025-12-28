@@ -250,8 +250,8 @@ main{
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: 500px;
-  width: 80%;
+  max-width: 700px; /* LARGER - was 500px */
+  width: 85%;
 }
 
 .product-image {
@@ -259,12 +259,7 @@ main{
   height: auto;
   filter: drop-shadow(0 30px 80px rgba(0,0,0,.7))
           drop-shadow(0 0 40px rgba(47,211,255,.3));
-  animation: product-float 6s ease-in-out infinite;
-}
-
-@keyframes product-float {
-  0%, 100% { transform: translateY(0) rotate(-1deg); }
-  50% { transform: translateY(-15px) rotate(1deg); }
+  /* REMOVED ANIMATION - now stationary */
 }
 
 /* Mascot Stickers Container */
@@ -284,7 +279,7 @@ main{
 /* Astronaut & Bear Band (bottom left, on the moon) */
 .mascot-band {
   width: 420px;
-  bottom: 8%;
+  bottom: 2%; /* MOVED DOWN - was 8% - now they're standing on the moon */
   left: 3%;
   animation: float-drift 8s ease-in-out infinite;
 }
@@ -956,7 +951,7 @@ main{
   
   /* Product smaller on mobile */
   .hero-product {
-    max-width: 320px;
+    max-width: 450px; /* LARGER on mobile - was 320px */
     width: 85%;
   }
 
@@ -982,7 +977,7 @@ main{
   /* Mascots smaller and repositioned on mobile */
   .mascot-band {
     width: 280px;
-    bottom: 5%;
+    bottom: 1%; /* MOVED DOWN on mobile too */
     left: 2%;
   }
   
