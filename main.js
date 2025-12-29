@@ -135,9 +135,9 @@ document.addEventListener('DOMContentLoaded', () => {
           const progress = Math.min(scrolled / maxScroll, 1);
           
           // Start position: center (54%)
-          // End position: left (20%)
+          // End position: far left (8%) - all the way to the edge
           const startLeft = 54;
-          const endLeft = 20;
+          const endLeft = 8;
           const currentLeft = startLeft - ((startLeft - endLeft) * progress);
           
           // Rotation: 0deg → -25deg (neck goes left off-screen)

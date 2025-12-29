@@ -259,7 +259,7 @@ main{
 /* Product Image - Center Stage */
 .hero-product {
   position: fixed; /* CHANGED - stays on screen while scrolling */
-  z-index: 3;
+  z-index: 1; /* LOWERED - behind other content (header is 1000, main content is higher) */
   top: 50vh; /* Use viewport height instead of % */
   left: 54%; /* Start centered */
   transform: translate(-50%, -50%);
@@ -350,6 +350,8 @@ main{
 /* WHY section spacing */
 .why{
   padding: 6vh 0 6vh;
+  position: relative;
+  z-index: 2; /* Above guitar background */
   margin-top: -60px; /* pulls WHY up under the seam */
   border-top: 1px solid rgba(255,255,255,.08);
 }
@@ -398,6 +400,8 @@ main{
 .section{
   padding: 70px 0;
   border-top: 1px solid rgba(255,255,255,.08);
+  position: relative;
+  z-index: 2; /* Above guitar background */
 }
 
 .container{
