@@ -1642,10 +1642,10 @@ main{
   border-color: rgba(255,10,213,.5);
 }
 
-/* Hotspot Info Panel - Positioned on Right Side */
+/* Hotspot Info Panel - Positioned on Right Side, Near Bottom */
 .hotspot-info {
   position: absolute;
-  top: 28%;
+  top: 72%;
   right: 5%;
   width: min(380px, calc(40% - 40px));
   background: rgba(0,0,0,.85);
