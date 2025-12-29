@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check if desktop (only run animation on screens wider than 980px)
     const isDesktop = () => window.innerWidth > 980;
     
-    // Continuous scroll animation - guitar moves throughout entire page
+    // Continuous scroll animation - guitar stays visible throughout entire page
     let ticking = false;
     
     window.addEventListener('scroll', () => {
@@ -129,32 +129,33 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const scrolled = window.pageYOffset;
-          const maxScroll = 1500; // Distance over which animation completes
+          const maxScroll = 800; // Distance over which animation completes (faster transition)
           
           // Calculate progress (0 to 1)
           const progress = Math.min(scrolled / maxScroll, 1);
           
           // Start position: center (54%)
-          // End position: left (25%)
+          // End position: left (20%)
           const startLeft = 54;
-          const endLeft = 25;
+          const endLeft = 20;
           const currentLeft = startLeft - ((startLeft - endLeft) * progress);
           
-          // Rotation: 0deg → -20deg (neck goes left off-screen)
-          const rotation = -20 * progress;
+          // Rotation: 0deg → -25deg (neck goes left off-screen)
+          const rotation = -25 * progress;
           
-          // Scale: 100% → 85% (gets slightly smaller)
-          const scale = 1 - (0.15 * progress);
+          // Scale: 100% → 80% (gets smaller)
+          const scale = 1 - (0.20 * progress);
           
-          // Move down continuously (parallax effect)
-          const parallaxSpeed = 0.25;
-          const yPos = scrolled * parallaxSpeed;
+          // Vertical position: starts at 50vh, moves down to 55vh, then stays
+          const startTop = 50;
+          const endTop = 55;
+          const currentTop = startTop + ((endTop - startTop) * progress);
           
           // Apply all transforms
           heroGuitar.style.left = `${currentLeft}%`;
+          heroGuitar.style.top = `${currentTop}vh`;
           heroGuitar.style.transform = `
             translate(-50%, -50%)
-            translateY(${yPos}px)
             rotate(${rotation}deg)
             scale(${scale})
           `;

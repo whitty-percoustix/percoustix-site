@@ -258,14 +258,15 @@ main{
 
 /* Product Image - Center Stage */
 .hero-product {
-  position: absolute;
+  position: fixed; /* CHANGED - stays on screen while scrolling */
   z-index: 3;
-  top: 52%; /* Start centered at top */
+  top: 50vh; /* Use viewport height instead of % */
   left: 54%; /* Start centered */
   transform: translate(-50%, -50%);
   max-width: 700px;
   width: 85%;
   transition: none; /* Remove transition, let JS handle it */
+  pointer-events: auto; /* Keep hotspots clickable */
 }
 
 /* Soft cyan glow behind guitar */
@@ -1007,8 +1008,11 @@ main{
     background-position: center center;
   }
   
-  /* Product smaller on mobile - stays centered */
+  /* Product smaller on mobile - stays in hero section */
   .hero-product {
+    position: absolute; /* Back to absolute on mobile - stays in hero */
+    top: 52%;
+    left: 50%;
     max-width: 450px;
     width: 85%;
   }
