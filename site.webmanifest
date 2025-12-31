@@ -1,0 +1,20 @@
+{
+  "name": "Percoustix",
+  "short_name": "Percoustix",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#001018",
+  "theme_color": "#2fd3ff",
+  "icons": [
+    {
+      "src": "assets/img/percoustix-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/percoustix-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
