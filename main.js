@@ -109,6 +109,8 @@ document.addEventListener('mousemove', (e) => {
 ========================= */
 document.addEventListener('DOMContentLoaded', () => {
   const heroGuitar = document.getElementById('heroGuitar');
+  const hotspots = document.querySelectorAll('.guitar-hotspot');
+  const waterSeam = document.querySelector('.water-seam');
   
   if (heroGuitar) {
     // Initial fade-in animation
@@ -118,6 +120,17 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Check if desktop (only run animation on screens wider than 980px)
     const isDesktop = () => window.innerWidth > 980;
+    
+    // Get water seam position (bottom edge where underwater starts)
+    let waterlineY = 0;
+    if (waterSeam) {
+      const updateWaterline = () => {
+        const seamRect = waterSeam.getBoundingClientRect();
+        waterlineY = seamRect.top + window.pageYOffset + (seamRect.height * 0.5); // Middle of seam
+      };
+      updateWaterline();
+      window.addEventListener('resize', updateWaterline);
+    }
     
     // Continuous scroll animation - guitar stays visible throughout entire page
     let ticking = false;
@@ -159,6 +172,32 @@ document.addEventListener('DOMContentLoaded', () => {
             rotate(${rotation}deg)
             scale(${scale})
           `;
+          
+          // UNDERWATER EFFECT: Fade out hotspots as they go below waterline
+          if (hotspots.length && waterlineY) {
+            const guitarRect = heroGuitar.getBoundingClientRect();
+            
+            hotspots.forEach(hotspot => {
+              // Get hotspot's position relative to guitar
+              const hotspotRect = hotspot.getBoundingClientRect();
+              const hotspotY = hotspotRect.top + (hotspotRect.height / 2);
+              
+              // Calculate how far below waterline the hotspot is
+              const distanceBelowWater = hotspotY - waterlineY;
+              
+              if (distanceBelowWater > 0) {
+                // Hotspot is underwater - fade out based on depth
+                const fadeDistance = 100; // Fade over 100px
+                const opacity = Math.max(0, 1 - (distanceBelowWater / fadeDistance));
+                hotspot.style.opacity = opacity;
+                hotspot.style.pointerEvents = opacity < 0.5 ? 'none' : 'auto';
+              } else {
+                // Hotspot is above water - fully visible
+                hotspot.style.opacity = 1;
+                hotspot.style.pointerEvents = 'auto';
+              }
+            });
+          }
           
           ticking = false;
         });
