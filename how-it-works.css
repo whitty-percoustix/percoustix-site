@@ -1194,8 +1194,8 @@
 /* Make hotspots even larger on touch screens */
 @media (hover: none) and (pointer: coarse) {
   .hotspot {
-    width: calc(var(--size, 100px) * 1.2);
-    height: calc(var(--size, 100px) * 1.2);
+    width: calc(var(--size, 100px));
+    height: calc(var(--size, 100px));
   }
   
   /* Larger tap targets for mobile */
